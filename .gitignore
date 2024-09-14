@@ -1,0 +1,15 @@
+
+# Executables
+*.exe
+*.out
+*.app
+
+#screenshots
+*.jpg
+*.jpeg
+*.png
+
+#vscode
+.vscode/*
+
+.DS_Store

@@ -27,12 +27,12 @@ class Menu {
     cout << endl;
   }
 
-  int sumAllValues(const int arr[], int size) {
+  void sumAllValues(const int arr[], int size) {
     int sum = 0;
     for (int i = 0; i < size; ++i) {
       sum += arr[i];
     }
-    return sum;
+    cout <<"Sum: " << sum << endl;
   }
 
   void outputOddValues(const int arr[], int size) {
@@ -69,7 +69,7 @@ class Menu {
   }
 
   void middleValues(int array[], int size) {
-    // only worry about even
+    // only worry about even: 1000 is even
     int middleValue;
     if (size % 2 == 0) {
       int middleIndex1 = size / 2 - 1;
@@ -80,13 +80,17 @@ class Menu {
     std::cout << "Middle value: " << middleValue << std::endl;
   }
 
+
   void firstValue(int array[]) {
-    cout << "First value: " << array[0] << "Index: 0" << endl;
+    cout << "First value: " << array[0] << " Index: 0" << endl;
   }
 
+
   void lastValue(int array[]) {
-    cout << "last value: " << array[1000] << "Index: 1000" << endl;
+    cout << "last value: " << array[1000] << " Index: 1000" << endl;
   }
+
+
 
   void highestValue(int array[], int size) {
     int max_val = array[0];
@@ -94,20 +98,17 @@ class Menu {
     for (int i = 1; i < size; ++i) {
       if (array[i] > max_val) {
         max_val = array[i];
-      }
-      cout << "Highest Value: " << max_val << "Index: " << i << endl;
-    }
+      }}
+      cout << "Highest Value: " << max_val << " Index: " << array[max_val] << endl;
   };
 
   void lowestValue(int array[], int size) {
     int min_val = array[0];
-
     for (int i = 1; i < size; ++i) {
       if (array[i] < min_val) {
         min_val = array[i];
-      }
-      cout << min_val << endl;
-    }
+      }}
+      cout << "Lowest Value: " << min_val << " Index: " << array[min_val] << endl;
   };
 
   void bubbleSort(int array[], int size) {

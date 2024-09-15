@@ -1,6 +1,17 @@
-
-Create a class with 8 methods{
+Create a class with 10 methods
 the class will accept an array of 1000 rand ints, target and size of the array
+
+    define outpur all values:
+        ouput all
+
+    define output sum of all values:
+        add all values and output
+
+    define output all odd values:
+        add all odd values and output
+
+    define output all even values:
+        add all even values and output
 
     define linear search:
         this method will take array, size and target
@@ -13,23 +24,25 @@ the class will accept an array of 1000 rand ints, target and size of the array
 
     define first value:
         return the first element in the array
+    
     define last value:
         retrun last element in array
 
-    define lowest value:
+    define lowest value and location:
         loop through each element and compaire then for the smallest int
+
+    define highest value and location:
+        loop through each element and compaire then for the largest int
 
     define bubbleSort:
         implement bubble sort
 
-    define mean average:
+    define ouput mean average:
         implement mean average
-}
 
+main 
+create rand array with 1000 elements
+loop menu with do while in main:
+create objects for each option
+accept user input
 
-main {
-    create rand array with 1000 elements
-    loop menu with do while in main:
-    create objects for each option
-    accept user input
-    }

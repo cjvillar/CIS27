@@ -19,6 +19,42 @@ class Menu {
     }
   }
 
+  void outputAllValues(const int arr[], int size) {
+    cout << "All values in the array:" << endl;
+    for (int i = 0; i < size; ++i) {
+      cout << arr[i] << " ";
+    }
+    cout << endl;
+  }
+
+  int sumAllValues(const int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+      sum += arr[i];
+    }
+    return sum;
+  }
+
+  void outputOddValues(const int arr[], int size) {
+    cout << "Odd values in the array:" << endl;
+    for (int i = 0; i < size; ++i) {
+      if (arr[i] % 2 != 0) {
+        cout << arr[i] << " ";
+      }
+    }
+    cout << endl;
+  }
+
+  void outputEvenValues(const int arr[], int size) {
+    cout << "Even values in the array:" << endl;
+    for (int i = 0; i < size; ++i) {
+      if (arr[i] % 2 == 0) {
+        cout << arr[i] << " ";
+      }
+    }
+    cout << endl;
+  }
+
   void linearSearch(int array[], int size) {
     int target;
     cout << "Enter target: ";
@@ -44,9 +80,13 @@ class Menu {
     std::cout << "Middle value: " << middleValue << std::endl;
   }
 
-  void firstValue(int array[]) { cout << "First value: " << array[0] << endl; }
+  void firstValue(int array[]) {
+    cout << "First value: " << array[0] << "Index: 0" << endl;
+  }
 
-  void lastValue(int array[]) { cout << "last value: " << array[1000] << endl; }
+  void lastValue(int array[]) {
+    cout << "last value: " << array[1000] << "Index: 1000" << endl;
+  }
 
   void highestValue(int array[], int size) {
     int max_val = array[0];
@@ -55,7 +95,7 @@ class Menu {
       if (array[i] > max_val) {
         max_val = array[i];
       }
-      cout << max_val << endl;
+      cout << "Highest Value: " << max_val << "Index: " << i << endl;
     }
   };
 
@@ -102,49 +142,65 @@ int main() {
   int choice;
   do {
     cout << "\nMenu:\n";
-    cout << "1. Linear Search\n";
-    cout << "2. Middle Values\n";
-    cout << "3. First Value\n";
-    cout << "4. Last Value\n";
-    cout << "5. Highest Value\n";
-    cout << "6. Lowest Value\n";
-    cout << "7. Bubble Sort\n";
-    cout << "8. Mean Average\n";
-    cout << "9. Exit\n";
+    cout << "1. Output all values\n";
+    cout << "2. Sum all values\n";
+    cout << "3. Output odd numbers\n";
+    cout << "4. Output even numbers\n";
+    cout << "5. Linear Search\n";
+    cout << "6. Middle Values\n";
+    cout << "7. First Value\n";
+    cout << "8. Last Value\n";
+    cout << "9. Highest Value\n";
+    cout << "10. Lowest Value\n";
+    cout << "11. Bubble Sort\n";
+    cout << "12. Mean Average\n";
+    cout << "13. Exit\n";
     cin >> choice;
     switch (choice) {
       case 1:
-        menu.linearSearch(menu.array, Menu::size);
+        menu.outputAllValues(menu.array, Menu::size);
         break;
       case 2:
-        menu.middleValues(menu.array, Menu::size);
+        menu.sumAllValues(menu.array, Menu::size);
         break;
       case 3:
-        menu.firstValue(menu.array);
+        menu.outputOddValues(menu.array, Menu::size);
         break;
       case 4:
-        menu.lastValue(menu.array);
+        menu.outputEvenValues(menu.array, Menu::size);
         break;
       case 5:
-        menu.highestValue(menu.array, Menu::size);
+        menu.linearSearch(menu.array, Menu::size);
         break;
       case 6:
-        menu.lowestValue(menu.array, Menu::size);
+        menu.middleValues(menu.array, Menu::size);
         break;
       case 7:
-        menu.bubbleSort(menu.array, Menu::size);
+        menu.firstValue(menu.array);
         break;
       case 8:
-        menu.meanAverage(menu.array, Menu::size);
+        menu.lastValue(menu.array);
         break;
       case 9:
+        menu.highestValue(menu.array, Menu::size);
+        break;
+      case 10:
+        menu.lowestValue(menu.array, Menu::size);
+        break;
+      case 11:
+        menu.bubbleSort(menu.array, Menu::size);
+        break;
+      case 12:
+        menu.meanAverage(menu.array, Menu::size);
+        break;
+      case 13:
         cout << "Exiting program." << endl;
         break;
       default:
         cout << "Invalid choice, please try again." << endl;
         break;
     }
-  } while (choice != 9);
+  } while (choice != 13);
 
   return 0;
 }

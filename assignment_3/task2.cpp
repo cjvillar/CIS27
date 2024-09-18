@@ -6,7 +6,6 @@ using namespace std;
 
 class Menu {
  public:
-  // note: static const shared with all instances of this class
   static const int size = 1000;  // fixed size of 1000 for the array
   int array[size];
 
@@ -27,7 +26,7 @@ class Menu {
     cout << endl;
   }
 
-  void sumAllValues(const int arr[], int size) {
+  int sumAllValues(const int arr[], int size) {
     int sum = 0;
     for (int i = 0; i < size; ++i) {
       sum += arr[i];
@@ -87,7 +86,7 @@ class Menu {
 
 
   void lastValue(int array[]) {
-    cout << "last value: " << array[1000] << " Index: 1000" << endl;
+    cout << "last value: " << sizeof(array)- 1 << " Index: 999" << endl;
   }
 
 
@@ -128,11 +127,8 @@ class Menu {
   };
 
   void meanAverage(int array[], int size) {
-    int sum;  // init sum
-    for (int i = 1; i < size; ++i) {
-      sum += array[i];  // add up all elements
-    }
-    int meanAvg = sum / size;
+    int sum = sumAllValues(array, size);
+    int meanAvg = sum/ size;
     std::cout << "Meand Average: " << meanAvg << endl;
   };
 };

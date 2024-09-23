@@ -90,13 +90,15 @@ class Common_Alg {
 
   void highestValue(int array[], int size) {
     int max_val = array[0];
+    int max_index = 0;
 
     for (int i = 1; i < size; ++i) {
       if (array[i] > max_val) {
         max_val = array[i];
+        max_index = i;
       }
     }
-    cout << "Highest Value: " << array[max_val] << " Index: " << max_val
+    cout << "Highest Value: " << array[max_val] << " Index: " << max_index
          << endl;
   };
 

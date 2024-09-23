@@ -1,15 +1,17 @@
 #include <cstdlib>
 #include <ctime>  // for srand
 #include <iostream>
+#include <cctype>
 
 using namespace std;
 
 class Menu {
- public:
-  static const int size = 1000;  // fixed size of 1000 for the array
-  int array[size];
 
-  Menu() {
+ public:
+  static const int size = 1000;  
+  int array[size]; // array size of 1000 
+
+  Menu() { // class constructor ( not required for code to work)
     // init random number generator
     srand(static_cast<unsigned int>(time(0)));
     // fill array with random values
@@ -27,12 +29,11 @@ class Menu {
   }
 
   int sumAllValues(const int arr[], int size) {
-    int sum = 0;
+    int sum = 0; 
     for (int i = 0; i < size; ++i) {
       sum += arr[i];
     }
-    cout <<"Sum: " << sum << endl;
-  }
+    }
 
   void outputOddValues(const int arr[], int size) {
     cout << "Odd values in the array:" << endl;
@@ -86,7 +87,7 @@ class Menu {
 
 
   void lastValue(int array[]) {
-    cout << "last value: " << sizeof(array)- 1 << " Index: 999" << endl;
+    cout << "last value: " << sizeof(array) - 1 << " Index: " << size - 1 << endl;
   }
 
 
@@ -128,76 +129,79 @@ class Menu {
 
   void meanAverage(int array[], int size) {
     int sum = sumAllValues(array, size);
-    int meanAvg = sum/ size;
+    int meanAvg = sum/size;
     std::cout << "Meand Average: " << meanAvg << endl;
   };
 };
 
 int main() {
-  Menu menu;
+  Menu menu; // obj constructor, link from outside class to class
 
-  int choice;
+  char choice; // use char for memory
+ 
   do {
     cout << "\nMenu:\n";
-    cout << "1. Output all values\n";
-    cout << "2. Sum all values\n";
-    cout << "3. Output odd numbers\n";
-    cout << "4. Output even numbers\n";
-    cout << "5. Linear Search\n";
-    cout << "6. Middle Values\n";
-    cout << "7. First Value\n";
-    cout << "8. Last Value\n";
-    cout << "9. Highest Value\n";
-    cout << "10. Lowest Value\n";
-    cout << "11. Bubble Sort\n";
-    cout << "12. Mean Average\n";
-    cout << "13. Exit\n";
+    cout << "A. Output all values\n";
+    cout << "B. Sum all values\n";
+    cout << "C. Output odd numbers\n";
+    cout << "D. Output even numbers\n";
+    cout << "E. Linear Search\n";
+    cout << "F. Middle Values\n";
+    cout << "G. First Value\n";
+    cout << "H. Last Value\n";
+    cout << "I. Highest Value\n";
+    cout << "J. Lowest Value\n";
+    cout << "K. Bubble Sort\n";
+    cout << "L. Mean Average\n";
+    cout << "M. Exit\n";
     cin >> choice;
+    choice = toupper(choice); //only use uppercase
+
     switch (choice) {
-      case 1:
+      case 'A':
         menu.outputAllValues(menu.array, Menu::size);
         break;
-      case 2:
-        menu.sumAllValues(menu.array, Menu::size);
+      case 'B':
+        cout <<"Sum: " << menu.sumAllValues(menu.array, Menu::size) << endl;
         break;
-      case 3:
+      case 'C':
         menu.outputOddValues(menu.array, Menu::size);
         break;
-      case 4:
+      case 'D':
         menu.outputEvenValues(menu.array, Menu::size);
         break;
-      case 5:
+      case 'E':
         menu.linearSearch(menu.array, Menu::size);
         break;
-      case 6:
+      case 'F':
         menu.middleValues(menu.array, Menu::size);
         break;
-      case 7:
+      case 'G':
         menu.firstValue(menu.array);
         break;
-      case 8:
+      case 'H':
         menu.lastValue(menu.array);
         break;
-      case 9:
+      case 'I':
         menu.highestValue(menu.array, Menu::size);
         break;
-      case 10:
+      case 'J':
         menu.lowestValue(menu.array, Menu::size);
         break;
-      case 11:
+      case 'K':
         menu.bubbleSort(menu.array, Menu::size);
         break;
-      case 12:
+      case 'L':
         menu.meanAverage(menu.array, Menu::size);
         break;
-      case 13:
+      case 'M':
         cout << "Exiting program." << endl;
         break;
       default:
         cout << "Invalid choice, please try again." << endl;
         break;
     }
-  } while (choice != 13);
+  } while (choice != 'M');
 
   return 0;
 }

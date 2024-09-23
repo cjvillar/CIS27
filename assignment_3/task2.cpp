@@ -12,10 +12,10 @@ class Common_Alg {
 
   Common_Alg() {  // class constructor ( not required for code to work)
     // init random number generator
-    srand(static_cast<unsigned int>(time(0)));
+    srand(time(0));
     // fill array with random values
     for (int i = 0; i < size; ++i) {
-      array[i] = rand() % 1000 + 1;
+      array[i] = rand() % 1000;
     }
   }
 

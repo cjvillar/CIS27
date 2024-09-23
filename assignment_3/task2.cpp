@@ -96,7 +96,7 @@ class Common_Alg {
         max_val = array[i];
       }
     }
-    cout << "Highest Value: " << max_val << " Index: " << array[max_val]
+    cout << "Highest Value: " << array[max_val] << " Index: " << max_val
          << endl;
   };
 

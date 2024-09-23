@@ -1,17 +1,16 @@
+#include <cctype>
 #include <cstdlib>
 #include <ctime>  // for srand
 #include <iostream>
-#include <cctype>
 
 using namespace std;
 
 class Common_Alg {
-
  public:
-  static const int size = 1000;  
-  int array[size]; // array size of 1000 
+  static const int size = 1000;
+  int array[size];  // array size of 1000
 
-  Common_Alg() { // class constructor ( not required for code to work)
+  Common_Alg() {  // class constructor ( not required for code to work)
     // init random number generator
     srand(static_cast<unsigned int>(time(0)));
     // fill array with random values
@@ -29,11 +28,11 @@ class Common_Alg {
   }
 
   int sumAllValues(const int arr[], int size) {
-    int sum = 0; 
+    int sum = 0;
     for (int i = 0; i < size; ++i) {
       sum += arr[i];
     }
-    }
+  }
 
   void outputOddValues(const int arr[], int size) {
     cout << "Odd values in the array:" << endl;
@@ -80,17 +79,14 @@ class Common_Alg {
     std::cout << "Middle value: " << middleValue << std::endl;
   }
 
-
   void firstValue(int array[]) {
     cout << "First value: " << array[0] << " Index: 0" << endl;
   }
 
-
   void lastValue(int array[]) {
-    cout << "last value: " << sizeof(array) - 1 << " Index: " << size - 1 << endl;
+    cout << "last value: " << sizeof(array) - 1 << " Index: " << size - 1
+         << endl;
   }
-
-
 
   void highestValue(int array[], int size) {
     int max_val = array[0];
@@ -98,8 +94,10 @@ class Common_Alg {
     for (int i = 1; i < size; ++i) {
       if (array[i] > max_val) {
         max_val = array[i];
-      }}
-      cout << "Highest Value: " << max_val << " Index: " << array[max_val] << endl;
+      }
+    }
+    cout << "Highest Value: " << max_val << " Index: " << array[max_val]
+         << endl;
   };
 
   void lowestValue(int array[], int size) {
@@ -107,8 +105,9 @@ class Common_Alg {
     for (int i = 1; i < size; ++i) {
       if (array[i] < min_val) {
         min_val = array[i];
-      }}
-      cout << "Lowest Value: " << min_val << " Index: " << array[min_val] << endl;
+      }
+    }
+    cout << "Lowest Value: " << min_val << " Index: " << array[min_val] << endl;
   };
 
   void bubbleSort(int array[], int size) {
@@ -129,16 +128,15 @@ class Common_Alg {
 
   void meanAverage(int array[], int size) {
     int sum = sumAllValues(array, size);
-    int meanAvg = sum/size;
+    int meanAvg = sum / size;
     std::cout << "Meand Average: " << meanAvg << endl;
   };
 };
 
 int main() {
-  Common_Alg menu; // obj constructor, link from outside class to class
+  Common_Alg menu;  // obj constructor, link from outside class to class
+  char choice;  // use char for memory
 
-  char choice; // use char for memory
- 
   do {
     cout << "\nMenu:\n";
     cout << "A. Output all values\n";
@@ -155,26 +153,27 @@ int main() {
     cout << "L. Mean Average\n";
     cout << "M. Exit\n";
     cin >> choice;
-    choice = toupper(choice); //only use uppercase
+    choice = toupper(choice);  // only use uppercase
 
     switch (choice) {
       case 'A':
-        menu.outputAllValues(menu.array, Menu::size);
+        menu.outputAllValues(menu.array, Common_Alg::size);
         break;
       case 'B':
-        cout <<"Sum: " << menu.sumAllValues(menu.array, Menu::size) << endl;
+        cout << "Sum: " << menu.sumAllValues(menu.array, Common_Alg::size)
+             << endl;
         break;
       case 'C':
-        menu.outputOddValues(menu.array, Menu::size);
+        menu.outputOddValues(menu.array, Common_Alg::size);
         break;
       case 'D':
-        menu.outputEvenValues(menu.array, Menu::size);
+        menu.outputEvenValues(menu.array, Common_Alg::size);
         break;
       case 'E':
-        menu.linearSearch(menu.array, Menu::size);
+        menu.linearSearch(menu.array, Common_Alg::size);
         break;
       case 'F':
-        menu.middleValues(menu.array, Menu::size);
+        menu.middleValues(menu.array, Common_Alg::size);
         break;
       case 'G':
         menu.firstValue(menu.array);
@@ -183,16 +182,16 @@ int main() {
         menu.lastValue(menu.array);
         break;
       case 'I':
-        menu.highestValue(menu.array, Menu::size);
+        menu.highestValue(menu.array, Common_Alg::size);
         break;
       case 'J':
-        menu.lowestValue(menu.array, Menu::size);
+        menu.lowestValue(menu.array, Common_Alg::size);
         break;
       case 'K':
-        menu.bubbleSort(menu.array, Menu::size);
+        menu.bubbleSort(menu.array, Common_Alg::size);
         break;
       case 'L':
-        menu.meanAverage(menu.array, Menu::size);
+        menu.meanAverage(menu.array, Common_Alg::size);
         break;
       case 'M':
         cout << "Exiting program." << endl;

@@ -5,13 +5,13 @@
 
 using namespace std;
 
-class Menu {
+class Common_Alg {
 
  public:
   static const int size = 1000;  
   int array[size]; // array size of 1000 
 
-  Menu() { // class constructor ( not required for code to work)
+  Common_Alg() { // class constructor ( not required for code to work)
     // init random number generator
     srand(static_cast<unsigned int>(time(0)));
     // fill array with random values
@@ -135,7 +135,7 @@ class Menu {
 };
 
 int main() {
-  Menu menu; // obj constructor, link from outside class to class
+  Common_Alg menu; // obj constructor, link from outside class to class
 
   char choice; // use char for memory
  

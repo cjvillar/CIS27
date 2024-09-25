@@ -2,45 +2,63 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <string>
 
-const int size = 1000;  // fixed size 1000 
-const int bufferSize = 1000;  // buffer size
+using namespace std;
 
-void generateRandomNumbers(int arr[]) {
-    std::srand(static_cast<unsigned int>(std::time(0)));  // seed with srand
-    for (int i = 0; i < size; ++i) {            // fill with random values
-        arr[i] = std::rand() % 1000 + 1;
-    }
+const int size = 1000;  // array size
+
+// write array data into a file
+void writeFile(const string& filename) {
+  int buffer[size];  // buffer (temp array)
+
+  // fill buffer with random values
+  for (int i = 0; i < size; ++i) {
+    buffer[i] = rand() % 1000 + 1;
+  }
+
+  ofstream outfile(filename);
+  if (!outfile.is_open()) {
+    cerr << "Error opening file: " << filename << endl;
+    return;
+  }
+
+  // write buffer to file
+  for (int i = 0; i < size; ++i) {
+    outfile << buffer[i] << ", ";  // comma delimited
+  }
+
+  outfile.close();  // close the file
 }
 
-void saveRandomNumbers(const int arr[]) {
-    char buffer[bufferSize];  // buffer
-    std::ofstream outfile("array.txt", std::ios::binary);
-    std::cin.getline(buffer, bufferSize)
-    outfile.rdbuf()->pubsetbuf(buffer, bufferSize);  //  buffer
+// read array data from file and output to stdout
+void readFile(const string& filename) {
+  int buffer[size];  // init buffer (again)
 
-    if (!outfile.is_open()) {
-        std::cerr << "Error opening file." << std::endl;
-        return;
-    }
+  ifstream infile(filename); //ifstream handles conversion str to int
+  if (!infile.is_open()) {
+    cerr << "Error opening file: " << filename << endl;
+    return;
+  }
 
-    // writeto the file using the buffer
-    outfile.write(reinterpret_cast<const char*>(arr), size * sizeof(int));
-    
-    
-}
+  // read data from file into buffer
+  for (int i = 0; i < size; ++i) {
+    infile >> buffer[i];
+  }
 
-//create a readfile function
+  infile.close();  // close the file
 
-void readFile(){
-    // ouput to std out
+  // output buffer data
+  for (int i = 0; i < size; ++i) {
+    cout << buffer[i] << " ";
+  }
+  cout << endl;
 }
 
 int main() {
-    int nums[size];
-    generateRandomNumbers(nums);  // rand number generator 
+  srand(static_cast<unsigned int>(time(0))); //rand num seed
+  writeFile("array.txt"); //write to file
+  readFile("array.txt");
 
-    saveRandomNumbers(nums);  // Save to file
-
-    return 0;
+  return 0;
 }

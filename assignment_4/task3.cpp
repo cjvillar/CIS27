@@ -27,7 +27,6 @@ void writeFile(const string& filename) {
   for (int i = 0; i < size; ++i) {
     outfile << buffer[i] << ", ";  // comma delimited
   }
-
   outfile.close();  // close the file
 }
 
@@ -61,6 +60,5 @@ int main() {
   srand(static_cast<unsigned int>(time(0))); //rand num seed
   writeFile("array.txt"); //write to file
   readFile("array.txt"); //read from file
-
   return 0;
 }

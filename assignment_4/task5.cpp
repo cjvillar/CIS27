@@ -15,7 +15,7 @@ class Common_Alg {
   Common_Alg() {  // class constructor ( not required for code to work)
     // read array from file
     if (!readArrayFromFile("array.txt")) {
-      std::cerr << "Error reading array from file." << std::endl;
+      std::cerr << "Error reading array file." << std::endl;
     }
   }
 
@@ -27,13 +27,13 @@ class Common_Alg {
       return false;
     }
 
-    // Read data into array (class variable)
+    // read data into array
     for (int i = 0; i < size; ++i) {
-      char delim; //remove delim
+      char delim; 
       infile >> array[i];
-      infile >> delim; // put delim here 
+      infile >> delim; //remove delim
       if (infile.fail()) {
-        std::cerr << "Error reading data from file." << std::endl;
+        std::cerr << "Error reading data file." << std::endl;
         return false;
       }
     }
@@ -41,8 +41,6 @@ class Common_Alg {
     infile.close();
     return true;
   }
-
-  
 
   void outputAllValues(const int arr[], int size) {
     cout << "All values in the array:" << endl;
@@ -100,7 +98,6 @@ class Common_Alg {
       int middleIndex2 = size / 2;
       middleValue = (array[middleIndex1] + array[middleIndex2]) / 2;
     }
-
     std::cout << "Middle value: " << middleValue << std::endl;
   }
 

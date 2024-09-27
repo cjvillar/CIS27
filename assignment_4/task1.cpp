@@ -27,7 +27,6 @@ void writeFile(const string& filename) {
   for (int i = 0; i < size; ++i) {
     outfile << buffer[i] << ", ";  // comma delimited
   }
-
   outfile.close();  // close the file
 }
 
@@ -35,7 +34,7 @@ void writeFile(const string& filename) {
 void readFile(const string& filename) {
   int buffer[size];  // init buffer (again)
 
-  ifstream infile(filename); //ifstream handles conversion str to int
+  ifstream infile(filename);  // ifstream handles conversion str to int
   if (!infile.is_open()) {
     cerr << "Error opening file: " << filename << endl;
     return;
@@ -43,7 +42,9 @@ void readFile(const string& filename) {
 
   // read data from file into buffer
   for (int i = 0; i < size; ++i) {
+    char delim;
     infile >> buffer[i];
+    infile >> delim;
   }
 
   infile.close();  // close the file
@@ -56,9 +57,8 @@ void readFile(const string& filename) {
 }
 
 int main() {
-  srand(static_cast<unsigned int>(time(0))); //rand num seed
-  writeFile("array.txt"); //write to file
-  readFile("array.txt"); //read from file
-
+  srand(static_cast<unsigned int>(time(0)));  // rand num seed
+  writeFile("array.txt");                     // write to file
+  readFile("array.txt");                      // read from file
   return 0;
 }

@@ -43,14 +43,16 @@ void readFile(const string& filename) {
 
   // read data from file into buffer
   for (int i = 0; i < size; ++i) {
+    char comma; // skip delim
     infile >> buffer[i];
+    infile >> comma;
   }
 
   infile.close();  // close the file
 
-  // output buffer data
+  // output buffer data each num mult by 10
   for (int i = 0; i < size; ++i) {
-    cout << buffer[i] << " ";
+    cout << buffer[i] * 10 << " ";
   }
   cout << endl;
 }

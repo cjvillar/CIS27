@@ -1,11 +1,11 @@
 import io
 from numpy import random
 
-# create in-memory buffer
+# create buffer
 buffer = []
 
 def randNum():
-    # generate random integers from 1 - 1000, 1000 times
+    # generate rand nums
     array = [random.randint(1000) for _ in range(1000)]
     return array
 
@@ -20,7 +20,7 @@ def save_array(random_array, buffer):
             f.write(f"{num}\n")
 
 
-# function to read from file and print to stdout
+#read from file and print to stdout
 def read_array(buffer):
     buffer.clear()  # clear the buffer before reading
 

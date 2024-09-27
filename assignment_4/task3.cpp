@@ -43,9 +43,9 @@ void readFile(const string& filename) {
 
   // read data from file into buffer
   for (int i = 0; i < size; ++i) {
-    char comma; // skip delim
+    char delim; // skip delim
     infile >> buffer[i];
-    infile >> comma;
+    infile >> delim;
   }
 
   infile.close();  // close the file

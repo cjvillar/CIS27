@@ -1,6 +1,4 @@
-// c++ main.cpp CommonAlg.cpp -o CommonAlg
-
-#include "CommonAlg.hpp"
+#include "CommonAlg.hpp" // c++ main.cpp CommonAlg.cpp -o CommonAlg
 
 using namespace std;
 

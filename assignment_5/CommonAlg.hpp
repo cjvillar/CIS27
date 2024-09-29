@@ -1,23 +1,20 @@
 #pragma once  // preprocessor directive
 
 #include <cctype>
-#include <cstdlib>
-#include <fstream>
-#include <iostream> 
 #include <ctime>  // for srand
+#include <fstream>
+#include <iostream>
 #include <string>
 
 class CommonAlg {
  public:
-  
-  int *array ;
-  int size ;
+  int* array;
+  int size;
 
   CommonAlg();  // class constructor
 
   // read array from a file into the buffer
   bool readArrayFromFile(const std::string& filename, int*& array, int& size);
-
   void outputAllValues(const int arr[], int size);
   int sumAllValues(const int arr[], int size);
   void outputOddValues(const int arr[], int size);

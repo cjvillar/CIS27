@@ -5,11 +5,9 @@ using namespace std;
 CommonAlg::CommonAlg() {
   if (!readArrayFromFile("array.txt", array, size)) {
     std::cerr << "Error reading array file." << std::endl;
-  }
-}
+  }}
 
-bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array,
-                                  int &size) {
+bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array, int &size) {
   std::ifstream infile(filename);
   if (!infile.is_open()) {
     std::cerr << "Error opening file: " << filename << std::endl;
@@ -19,7 +17,7 @@ bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array,
   int value;
   char delim;
 
-  array = (int *)malloc(sizeof(int));  // init array with malloc
+  array = new int[1];  // init array with new
   if (array == nullptr) {
     std::cerr << "Error allocating memory." << std::endl;
     return false;
@@ -27,19 +25,23 @@ bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array,
   size = 0;
 
   while (infile >> value) {
-    array = (int *)realloc(array, (size + 1) * sizeof(int));
-    if (array == nullptr) {
+    int* temp = new int[size + 1];  // temp array for reallocation
+    if (temp == nullptr) {
       std::cerr << "Error reallocating memory." << std::endl;
+      delete[] array;
       return false;
     }
-    array[size] = value;
+    std::copy(array, array + size, temp);  // copy data to temp
+    temp[size] = value;
+    delete[] array;  // free original array
+    array = temp;
     size++;
-    infile >> delim;  // remove delim, I should probably remove
+    infile >> delim;
   }
 
   if (infile.fail() && !infile.eof()) {
     std::cerr << "Error reading data from file." << std::endl;
-    free(array);
+    delete[] array;
     array = nullptr;
     return false;
   }

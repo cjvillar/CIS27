@@ -1,30 +1,32 @@
-#pragma once  // preprocessor directive
+#pragma once
 
-#include <cctype>
-#include <ctime>  // for srand
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <string>
 
 class CommonAlg {
- public:
-  int* array;
-  int size;
+private:
+    int* array; //pointer to array
+    int size;
 
-  CommonAlg();  // class constructor
+public:
+    CommonAlg();  // class constructor
 
-  // read array from a file into the buffer
-  bool readArrayFromFile(const std::string& filename, int*& array, int& size);
-  void outputAllValues(const int arr[], int size);
-  int sumAllValues(const int arr[], int size);
-  void outputOddValues(const int arr[], int size);
-  void outputEvenValues(const int arr[], int size);
-  void middleValues(int array[], int size);
-  void firstValue(int array[]);
-  void lastValue(int array[]);
-  void highestValue(int array[], int size);
-  void lowestValue(int array[], int size);
-  void bubbleSort(int array[], int size, bool output);
-  void meanAverage(int array[], int size);
-  void binarySearch(int array[], int size);
+    // read array from a file into the buffer
+    bool readArrayFromFile(const std::string& filename);
+
+    // methods
+    void outputAllValues();
+    int sumAllValues();
+    void outputOddValues();
+    void outputEvenValues();
+    void middleValues();
+    void firstValue();
+    void lastValue();
+    void highestValue();
+    void lowestValue();
+    void bubbleSort(bool output);
+    void meanAverage();
+    void binarySearch();
 };

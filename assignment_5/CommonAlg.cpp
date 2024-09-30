@@ -2,12 +2,14 @@
 
 using namespace std;
 
+//make array a class variable so i dont needd to pass to each method
+
 CommonAlg::CommonAlg() {
-  if (!readArrayFromFile("array.txt", array, size)) {
+  if (!readArrayFromFile("array.txt")) {
     std::cerr << "Error reading array file." << std::endl;
   }}
 
-bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array, int &size) {
+bool CommonAlg::readArrayFromFile(const std::string &filename) {
   std::ifstream infile(filename);
   if (!infile.is_open()) {
     std::cerr << "Error opening file: " << filename << std::endl;
@@ -15,11 +17,11 @@ bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array, int 
   }
 
   int value;
-  char delim;
+  char delim; // to store deliminator 
 
   array = new int[1];  // init array with new
   if (array == nullptr) {
-    std::cerr << "Error allocating memory." << std::endl;
+    std::cerr << "Memory Read Error." << std::endl;
     return false;
   }
   size = 0;
@@ -27,11 +29,11 @@ bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array, int 
   while (infile >> value) {
     int* temp = new int[size + 1];  // temp array for reallocation
     if (temp == nullptr) {
-      std::cerr << "Error reallocating memory." << std::endl;
+      std::cerr << "Memory write error." << std::endl;
       delete[] array;
       return false;
     }
-    std::copy(array, array + size, temp);  // copy data to temp
+    std::copy(array, array + size, temp);  //copy data to temp arr
     temp[size] = value;
     delete[] array;  // free original array
     array = temp;
@@ -50,43 +52,43 @@ bool CommonAlg::readArrayFromFile(const std::string &filename, int *&array, int 
   return true;
 }
 
-void CommonAlg::outputAllValues(const int arr[], int size) {
+void CommonAlg::outputAllValues() {
   cout << "All values in the array:" << endl;
   for (int i = 0; i < size; ++i) {
-    cout << arr[i] << " ";
+    cout << array[i] << " ";
   }
   cout << endl;
 }
 
-int CommonAlg::sumAllValues(const int arr[], int size) {
+int CommonAlg::sumAllValues() {
   int sum = 0;
   for (int i = 0; i < size; ++i) {
-    sum += arr[i];
+    sum += array[i];
   }
   return sum;
 }
 
-void CommonAlg::outputOddValues(const int arr[], int size) {
+void CommonAlg::outputOddValues() {
   cout << "Odd values in the array:" << endl;
   for (int i = 0; i < size; ++i) {
-    if (arr[i] % 2 != 0) {
-      cout << arr[i] << " ";
+    if (array[i] % 2 != 0) {
+      cout << array[i] << " ";
     }
   }
   cout << endl;
 }
 
-void CommonAlg::outputEvenValues(const int arr[], int size) {
+void CommonAlg::outputEvenValues() {
   cout << "Even values in the array:" << endl;
   for (int i = 0; i < size; ++i) {
-    if (arr[i] % 2 == 0) {
-      cout << arr[i] << " ";
+    if (array[i] % 2 == 0) {
+      cout << array[i] << " ";
     }
   }
   cout << endl;
 }
 
-void CommonAlg::middleValues(int array[], int size) {
+void CommonAlg::middleValues() {
   int middleValue;
   if (size % 2 == 0) {
     int middleIndex1 = size / 2 - 1;
@@ -96,15 +98,15 @@ void CommonAlg::middleValues(int array[], int size) {
   std::cout << "Middle value: " << middleValue << std::endl;
 }
 
-void CommonAlg::firstValue(int array[]) {
+void CommonAlg::firstValue() {
   cout << "First value: " << array[0] << " Index: 0" << endl;
 }
 
-void CommonAlg::lastValue(int array[]) {
+void CommonAlg::lastValue() {
   cout << "Last value: " << array[size - 1] << " Index: " << size - 1 << endl;
 }
 
-void CommonAlg::highestValue(int array[], int size) {
+void CommonAlg::highestValue() {
   int max_val = array[0];
   int max_index = 0;
 
@@ -117,7 +119,7 @@ void CommonAlg::highestValue(int array[], int size) {
   cout << "Highest Value: " << max_val << " Index: " << max_index << endl;
 }
 
-void CommonAlg::lowestValue(int array[], int size) {
+void CommonAlg::lowestValue() {
   int min_val = array[0];
   int min_index = 0;
 
@@ -129,8 +131,8 @@ void CommonAlg::lowestValue(int array[], int size) {
   }
   cout << "Lowest Value: " << min_val << " Index: " << min_index << endl;
 }
-
-void CommonAlg::bubbleSort(int array[], int size, bool output) {
+//bool for output 
+void CommonAlg::bubbleSort(bool output=true) {
   for (int i = 0; i < size - 1; i++) {
     for (int j = 0; j < size - i - 1; j++) {
       if (array[j] > array[j + 1]) {
@@ -149,20 +151,20 @@ void CommonAlg::bubbleSort(int array[], int size, bool output) {
   }
 }
 
-void CommonAlg::meanAverage(int array[], int size) {
-  int sum = sumAllValues(array, size);
+void CommonAlg::meanAverage() {
+  int sum = sumAllValues();
   int meanAvg = sum / size;
   std::cout << "Mean Average: " << meanAvg << endl;
 }
 
-void CommonAlg::binarySearch(int array[], int size) {
+void CommonAlg::binarySearch() {
   if (size <= 0) {
     cout << "Array is empty or size is invalid." << endl;
     return;
   }
 
   // sort array with bubble sort
-  bubbleSort(array, size, false);
+  bubbleSort(false);
 
   int target;
   cout << "Enter target: ";
@@ -171,7 +173,7 @@ void CommonAlg::binarySearch(int array[], int size) {
   while (!(cin >> target)) {
     cout << "Invalid input. Please enter an integer: ";
     cin.clear();
-    cin.ignore(1000, '\n');
+    cin.ignore(10, '\n');
   }
 
   int left = 0;

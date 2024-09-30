@@ -26,40 +26,40 @@ int main() {
 
     switch (choice) {
       case 'A':
-        menu.outputAllValues(menu.array, menu.size);
+        menu.outputAllValues();
         break;
       case 'B':
-        cout << "Sum: " << menu.sumAllValues(menu.array, menu.size) << endl;
+        cout << "Sum: " << menu.sumAllValues() << endl;
         break;
       case 'C':
-        menu.outputOddValues(menu.array, menu.size);
+        menu.outputOddValues();
         break;
       case 'D':
-        menu.outputEvenValues(menu.array, menu.size);
+        menu.outputEvenValues();
         break;
       case 'E':
-        menu.binarySearch(menu.array, menu.size);
+        menu.binarySearch();
         break;
       case 'F':
-        menu.middleValues(menu.array, menu.size);
+        menu.middleValues();
         break;
       case 'G':
-        menu.firstValue(menu.array);
+        menu.firstValue();
         break;
       case 'H':
-        menu.lastValue(menu.array);
+        menu.lastValue();
         break;
       case 'I':
-        menu.highestValue(menu.array, menu.size);
+        menu.highestValue();
         break;
       case 'J':
-        menu.lowestValue(menu.array, menu.size);
+        menu.lowestValue();
         break;
       case 'K':
-        menu.bubbleSort(menu.array, menu.size, true);
+        menu.bubbleSort(true);
         break;
       case 'L':
-        menu.meanAverage(menu.array, menu.size);
+        menu.meanAverage();
         break;
       case 'M':
         cout << "Exiting program." << endl;

@@ -1,10 +1,10 @@
-#include "CommonAlg.hpp" // c++ main.cpp CommonAlg.cpp -o CommonAlg
+#include "CommonAlg.hpp"  // c++ main.cpp CommonAlg.cpp -o CommonAlg
 
 using namespace std;
 
 int main() {
   CommonAlg menu;  // obj constructor, link from outside class to class
-  char choice;   
+  char choice;
 
   do {
     cout << "\nMenu:\n";

@@ -103,18 +103,20 @@ void GetData::meanAverage() {
 
 void GetData::mode() { 
   int mode_count = 0;
+  float mode_value = 0.00;
   for (int i = 1; i < size; ++i) {
+    int count = 0;
     for (int j = 1; j < size; ++j) {
       if (array[i] == array[j]) {
-        float mode = array[i];
-        cout << "mode value: " << mode << endl;
+        count ++;
       }
     }
-    if(mode_count ==0 ){
-      cout << "No mode in this set" << endl;
+    if(count > mode_count ){
+      mode_count = count;
+      mode_value = array[i];
     }
-   
   }
+  cout << "mode value: " << mode_value << endl;
 }
 
 void GetData::highestValue() {

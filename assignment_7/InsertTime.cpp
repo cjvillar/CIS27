@@ -39,7 +39,6 @@ int main() {
 
   // calc delta time in ms
   double deltaTime = 1000.0 * (end - start) / CLOCKS_PER_SEC;
-  std::cout << "Time: " << deltaTime << " ms"
-            << std::endl;
+  std::cout << "Time: " << deltaTime << " ms" << std::endl;
   return 0;
 }

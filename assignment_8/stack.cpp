@@ -12,13 +12,12 @@ class STACK {
 
  public:
   STACK();  // default constructor
-  bool push(char);  
-  char pop(); 
+  bool push(char);
+  char pop();
   bool isEmpty();
   bool isFull();
-  char peek();  
+  char peek();
 };
-
 
 STACK::STACK() { top = -1; }
 
@@ -42,12 +41,11 @@ char STACK::pop() {
 bool STACK::isEmpty() { return top == -1; }
 bool STACK::isFull() { return top == SIZE - 1; }
 
-
-char STACK::peek() { // return top char without removeing it
+char STACK::peek() {  // return top char without removeing it
   if (!isEmpty()) {
     return array[top];
   }
-  return '\0';  //null char if empty
+  return '\0';  // null char if empty
 }
 
 int main() {
@@ -60,18 +58,16 @@ int main() {
   // push all chars of string on stack
   for (char c : input) {
     if (!stack.push(c)) {
-      break;  //stack full
+      break;  // stack full
     }
   }
 
   cout << "Reversed string: ";
-  
+
   // pop all chars in reverse
   while (!stack.isEmpty()) {
     cout << stack.pop();
   }
-
   cout << endl;
-
   return 0;
 }

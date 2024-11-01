@@ -6,35 +6,35 @@ using namespace std;
 
 class STACK {
  private:
-  stack<char> stackContainer;
+  stack<char> stackVector;
 
  public:
-  bool push(char);  
-  char pop(); 
+  bool push(char);
+  char pop();
   bool isEmpty();
-  char peek();  
+  char peek();
 };
 
 bool STACK::push(char n) {
-  stackContainer.push(n);
+  stackVector.push(n);
   return true;
 }
 
 char STACK::pop() {
   if (isEmpty()) {
-    cout << "Stack is empty, can't pop." << endl;
+    cout << "Stack is empty, cant pop." << endl;
     return '\0';  // return null char for empty stack
   }
-  char topElement = stackContainer.top();
-  stackContainer.pop();
+  char topElement = stackVector.top();
+  stackVector.pop();
   return topElement;
 }
 
-bool STACK::isEmpty() { return stackContainer.empty(); }
+bool STACK::isEmpty() { return stackVector.empty(); }
 
 char STACK::peek() {
   if (!isEmpty()) {
-    return stackContainer.top();
+    return stackVector.top();
   }
   return '\0';  // null char if empty
 }
@@ -46,14 +46,14 @@ int main() {
   cout << "Please input a string: ";
   cin >> input;
 
-  // Push all chars of the string onto the stack
+  // push chars  on stack
   for (char c : input) {
     stack.push(c);
   }
 
   cout << "Reversed string: ";
-  
-  // Pop all chars in reverse
+
+  // pop
   while (!stack.isEmpty()) {
     cout << stack.pop();
   }

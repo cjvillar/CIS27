@@ -2,7 +2,6 @@
 #include <string>
 
 #define SIZE 100
-
 using namespace std;
 
 class QUEUE {
@@ -13,7 +12,7 @@ class QUEUE {
   int size;
 
  public:
-  QUEUE();  // constructor
+  QUEUE(); 
   bool enqueue(char);
   char dequeue();
   bool isEmpty();
@@ -67,20 +66,24 @@ int main() {
   cout << "input string: ";
   cin >> input;
 
-  // enqueue all string chars into queue
+  // enqueue twice
   for (char c : input) {
-    // enque for each char (doubles)
-    if (!queue.enqueue(c) || !queue.enqueue(c)) {
-      break;  // queue full
+    if (!queue.enqueue(c)) {
+      break; //break when queu full
+    }
+    if (!queue.enqueue(c)) {
+      break;  
     }
   }
 
   cout << "doubled output: ";
 
-  // dequeue in original
+  // dequeue 
   while (!queue.isEmpty()) {
-    cout << queue.dequeue();
+    char c = queue.dequeue();
+    cout << c;
   }
   cout << endl;
+
   return 0;
 }

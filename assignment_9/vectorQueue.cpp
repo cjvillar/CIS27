@@ -48,20 +48,25 @@ int main() {
   QUEUE queue;
   string input;
 
-  cout << "Input string: ";
+  cout << "input string: ";
   cin >> input;
 
+  // enqueue twice
   for (char c : input) {
     if (!queue.enqueue(c)) {
-      break;  // queue full
+      break; //break when queu full
+    }
+    if (!queue.enqueue(c)) {
+      break;  
     }
   }
 
-  cout << "Doubled output: ";
+  cout << "doubled output: ";
 
+  // dequeue 
   while (!queue.isEmpty()) {
     char c = queue.dequeue();
-    cout << c << c;  // output char twice
+    cout << c;
   }
   cout << endl;
 

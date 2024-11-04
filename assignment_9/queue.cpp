@@ -1,17 +1,19 @@
 #include <iostream>
 #include <string>
 
-#define SIZE 5
+#define SIZE 100
 
 using namespace std;
 
 class QUEUE {
  private:
   char array[SIZE];
-  int front, rear;
+  int front;
+  int rear; 
+  int size;
 
  public:
-  QUEUE();  // default constructor
+  QUEUE();  // constructor
   bool enqueue(char);
   char dequeue();
   bool isEmpty();
@@ -22,31 +24,34 @@ class QUEUE {
 QUEUE::QUEUE() {
   front = 0;
   rear = -1;
+  size = 0;
 }
 
 bool QUEUE::enqueue(char n) {
   if (isFull()) {
-    cout << "Queue is full, cant enqueue." << endl;
+    cout << "queue full, cant enqueue." << endl;
     return false;
   }
   rear = (rear + 1) % SIZE;
   array[rear] = n;
+  size++;
   return true;
 }
 
 char QUEUE::dequeue() {
   if (isEmpty()) {
-    cout << "Queue is empty, cant dequeue." << endl;
+    cout << "queue empty, cant dequeue." << endl;
     return '\0';  // return null char empty queue
   }
   char value = array[front];
   front = (front + 1) % SIZE;
+  size--;
   return value;
 }
 
-bool QUEUE::isEmpty() { return front == (rear + 1) % SIZE; }
+bool QUEUE::isEmpty() { return size == 0; }
 
-bool QUEUE::isFull() { return (rear + 1) % SIZE == front; }
+bool QUEUE::isFull() { return size == SIZE; }
 
 char QUEUE::peek() {  // return front char without removing it
   if (!isEmpty()) {
@@ -59,24 +64,23 @@ int main() {
   QUEUE queue;
   string input;
 
-  cout << "Please input a string: ";
+  cout << "input string: ";
   cin >> input;
 
   // enqueue all string chars into queue
   for (char c : input) {
-    if (!queue.enqueue(c)) {
-      break;  //queue full
+    // enque for each char (doubles)
+    if (!queue.enqueue(c) || !queue.enqueue(c)) {
+      break;  // queue full
     }
   }
 
-  cout << "Queued string in original order: ";
+  cout << "doubled output: ";
 
-  // dequeue all chars in the original order
+  // dequeue in original
   while (!queue.isEmpty()) {
     cout << queue.dequeue();
   }
-
   cout << endl;
-
   return 0;
 }

@@ -22,7 +22,7 @@ bool STACK::push(char n) {
 
 char STACK::pop() {
   if (isEmpty()) {
-    cout << "Stack is empty, cant pop." << endl;
+    cout << "stack empty, cant pop." << endl;
     return '\0';  // return null char for empty stack
   }
   char topElement = stackVector.top();
@@ -43,15 +43,16 @@ int main() {
   STACK stack;
   string input;
 
-  cout << "Please input a string: ";
-  cin >> input;
+  cout << "input a string: ";
+  //cin >> input;
+  getline(cin,input); // so I can use spaces in strings
 
   // push chars  on stack
   for (char c : input) {
     stack.push(c);
   }
 
-  cout << "Reversed string: ";
+  cout << "reversed string: ";
 
   // pop
   while (!stack.isEmpty()) {
